@@ -1,0 +1,82 @@
+<section>
+    <div class="uk-cover-container uk-hidden@l">
+        <canvas width="100" height="250"></canvas>
+        <img src="assets/img/v1.jpg" alt="" uk-cover="" class="uk-cover">
+    </div>
+
+
+    <div class="uk-cover-container mypaddingt uk-visible@l">
+        <canvas width="500" height="250"></canvas>
+        <img src="assets/img/v1.jpg" class="uk-cover" style="height: 432px;width: 1350px;">
+    </div>
+</section>
+
+
+
+<!-- <div class="uk-margin uk-padding">
+    <div class="uk-search uk-search-default">
+        <span uk-search-icon class="uk-search-icon"></span>
+        <input [(ngModel)]="term" class="uk-search-input" type="text" placeholder="بحث">
+    </div>
+</div> -->
+
+<div class="uk-padding">
+    <p span class="pColor"><span class="noteColor">ملاحظة: </span> يمكنك البحث بواسطة اسم المريض , رقم الهاتف , البريد الالكتروني , الحالة المرضية , المحافظة. </p>
+
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-2@m">
+        <nav class="uk-navbar-container uk-navbar" uk-navbar="">
+            <div class="uk-navbar-left">
+                <div class="uk-navbar-item">
+                    <div class="uk-search uk-search-navbar">
+                        <span uk-search-icon class="uk-search-icon"></span>
+                        <input class="uk-search-input" type="search" placeholder="بحث ..." [(ngModel)]="term">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<section>
+
+    <div class="uk-padding" *ngIf="term ">
+
+        <div class="uk-card uk-card-default uk-card-body   uk-card-hover mymargin" id="parentBadge" style="margin-bottom:40px;" *ngFor="let item of items |filter:term ">
+
+            <div>
+                <span class="uk-card-badge uk-label minAddress maxAddress " style="text-align:center;">{{item.province}}</span>
+            </div>
+
+            <div class="uk-comment uk-comment-primary">
+                <div class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="uk-comment-avatar" src="assets/img/help1.png">
+                    </div>
+                    <div class="uk-width-expand">
+                        <h4 class="uk-comment-title uk-margin-remove titleEdit">{{item.illness}}</h4>
+                        <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top uk-visible@s">
+                            <li>بواسطة : {{item.name}} | التاريخ : {{item.time}} </li>
+                            <li> <a (click)="moreInfo(item.$key)" class="uk-button uk-button-text"> عرض التفاصيل </a> </li>
+                        </ul>
+
+
+                        <div style="text-align:right;" class="uk-hidden@s">
+                            <ul class="uk-comment-meta uk-subnav  uk-margin-remove-top ">
+                                <li class="paragraph1">بواسطة : {{item.name}} </li>
+                                <li class="paragraph1"> التاريخ : {{item.time}} </li>
+                            </ul>
+                            <li class="paragraph1"> <a (click)="moreInfo(item.$key)" class="uk-button uk-button-text"> عرض التفاصيل </a> </li>
+                        </div>
+                        <ul hidden>
+                            <li>{{item.phone}}</li>
+                            <li>{{item.price}}</li>
+                            <li>{{item.email}}</li>
+                            <li>{{item.time}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

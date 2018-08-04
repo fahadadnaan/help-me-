@@ -1,0 +1,266 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+
+<nav class="uk-navbar-container" uk-navbar style="background: #eeebe7;">
+
+
+
+    <div class="uk-navbar-right ">
+
+        <ul class="uk-navbar-nav uk-hidden@m">
+            <li><a href="#" uk-toggle="target: #offcanvas-usage" aria-expanded="false"><i uk-icon="menu" aria-hidden="true"></i></a></li>
+        </ul>
+
+        <ul class="uk-navbar-nav uk-visible@m">
+            <li class="uk-active"><a routerLink="/"> ساعدني</a></li>
+            <li><a routerLink="/allillnesses">الحالات المرضية</a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/myillness">حالتي المرضية </a></li>
+            <li><a routerLink="/search">بحث</a></li>
+            <li><a routerLink="/callus">أتصل بنا </a></li>
+        </ul>
+
+    </div>
+
+
+    <div class="uk-navbar-left">
+
+        <ul class="uk-navbar-nav">
+
+
+            <li *ngIf="!isLoggedIn"><a href="#modal-Rejister" uk-toggle>التسجيل</a></li>
+            <li *ngIf="!isLoggedIn"><a href="#modal-login" uk-toggle>الدخول</a></li>
+
+            <li *ngIf="isLoggedIn">
+                <a href="#">حسابك الشخصي</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li> <a routerLink="/addillness">  أضف حالة مرضية جديده</a> </li>
+                        <li> <a routerLink="/userprofile">معلوماتك</a> </li>
+
+                        <li><a (click)="logout()"> خروج</a></li>
+                    </ul>
+                </div>
+            </li>
+
+
+        </ul>
+
+    </div>
+
+
+
+</nav>
+
+
+
+<!--Rejister-->
+
+
+<div id="modal-Rejister" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <fieldset class="uk-fieldset">
+
+            <form style="   margin-bottom: 50px;">
+                <div class="glowBox">
+                    <h4 class="title">التسجيل بواسطة مواقع التواصل الاجتماعي </h4>
+                    <div class="socialMedia">
+                        <a class="btn btn-just-icon btn-link uk-modal-close" (click)="signInWithFacebook()">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                        <a class="btn btn-just-icon btn-link" (click)="signInWithTwitter()">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-just-icon btn-link uk-modal-close" (click)="signInWithGoogle()">
+                            <i class="fab fa-google-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <div class="uk-margin" [formGroup]="angularForm" novalidate>
+                <div class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                    <input class="uk-input " type="email" placeholder="البريد الالكتروني" name="email" [(ngModel)]="email" formControlName="email">
+
+                    <div *ngIf="angularForm.controls['email'].invalid && (angularForm.controls['email'].dirty || angularForm.controls['email'].touched)" class="uk-alert-danger" uk-alert>
+                        <div *ngIf="angularForm.controls['email'].errors.required">
+                            البريد ألالكتروني مطلوب
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-margin" [formGroup]="angularForm" novalidate>
+                <div class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                    <input class="uk-input" type="password" placeholder="كلمة السر" name="password" [(ngModel)]="password" formControlName="password">
+                    <div *ngIf="angularForm.controls['password'].invalid && (angularForm.controls['password'].dirty || angularForm.controls['password'].touched)" class="uk-alert-danger" uk-alert>
+                        <div *ngIf="angularForm.controls['password'].errors.required">
+                            كلمة السر مطلوبة
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+        <p class="uk-text-center">
+            <button class=" uk-button uk-button-primary uk-modal-close" type="button" (click)="myRegister()" [disabled]="angularForm.pristine " [disabled]="angularForm.invalid">تسجيل </button>
+            <br><br>
+            <a href="#modal-login" uk-toggle class="uk-button uk-button-text">هل تمتلك حساب ؟</a>
+        </p>
+
+        <p class="uk-text-center">
+            <button class="uk-button uk-button-danger uk-modal-close" type="button">الغاء </button>
+        </p>
+    </div>
+</div>
+
+
+
+
+
+<!--LogIn-->
+
+
+
+<div id="modal-login" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <fieldset class="uk-fieldset">
+
+            <form style="   margin-bottom: 50px;" name=angularForm.form novalidate ng-submit=angularForm.signUp()>
+                <div class="glowBox">
+                    <h4 class="title">الدخول بواسطة مواقع التواصل الاجتماعي </h4>
+                    <div class="socialMedia">
+                        <a class="btn btn-just-icon btn-link uk-modal-close" (click)="logInWithFacebook()">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                        <a class="btn btn-just-icon btn-link uk-modal-close" (click)="logInWithTwitter()">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-just-icon btn-link uk-modal-close" (click)="logInWithGoogle()">
+                            <i class="fab fa-google-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <div class="uk-margin" [formGroup]="angularForm" novalidate>
+                <div class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                    <input class="uk-input " type="email" placeholder="البريد الالكتروني" name="email" [(ngModel)]="email" formControlName="email">
+
+                    <div *ngIf="angularForm.controls['email'].invalid && (angularForm.controls['email'].dirty || angularForm.controls['email'].touched)" class="uk-alert-danger" uk-alert>
+                        <div *ngIf="angularForm.controls['email'].errors.required">
+                            البريد ألالكتروني مطلوب
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-margin" [formGroup]="angularForm" novalidate>
+                <div class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                    <input class="uk-input" type="password" placeholder="كلمة السر" name="password" [(ngModel)]="password" formControlName="password">
+                    <div *ngIf="angularForm.controls['password'].invalid && (angularForm.controls['password'].dirty || angularForm.controls['password'].touched)" class="uk-alert-danger" uk-alert>
+                        <div *ngIf="angularForm.controls['password'].errors.required">
+                            كلمة السر مطلوبة
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="uk-text-center">
+            <button class=" uk-button uk-button-primary uk-modal-close" type="button" (click)="myLogin()" [disabled]="angularForm.pristine " [disabled]="angularForm.invalid">دخول </button>
+            <br><br>
+            <p class="align">
+                <span class="alignRight"><a href="#modal-Rejister" uk-toggle class="uk-button uk-button-text" >لا تمتلك حساب ؟</a>
+               </span>
+                <span style="padding-right:40px;" class="alignLeft"><a href="#" href="#modal-ResetPassword" uk-toggle class="uk-button uk-button-text">هل فقدت كلمة السر ؟ </a></span>
+            </p>
+
+        </div>
+
+        <p class="uk-text-center">
+            <button class="uk-button uk-button-danger uk-modal-close" type="button">الغاء </button>
+        </p>
+    </div>
+</div>
+
+
+
+
+<!--ResetPassword-->
+<div id="modal-ResetPassword" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <fieldset class="uk-fieldset">
+
+            <form style="   margin-bottom: 50px;">
+                <div class="glowBox">
+                    <h4 class="title">رجاءا قم بأدخال بريدك الألكتروني بصورة صحيحة </h4>
+                </div>
+            </form>
+
+            <div class="uk-margin" [formGroup]="angularForm" novalidate>
+                <div class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                    <input class="uk-input " type="email" placeholder="البريد الالكتروني" name="emailResetPassword" [(ngModel)]="emailResetPassword" formControlName="emailResetPassword">
+
+                    <div *ngIf="angularForm.controls['emailResetPassword'].invalid && (angularForm.controls['emailResetPassword'].dirty || angularForm.controls['emailResetPassword'].touched)" class="uk-alert-danger" uk-alert>
+                        <div *ngIf="angularForm.controls['emailResetPassword'].errors.required">
+                            البريد ألالكتروني مطلوب
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <p class="uk-text-center">
+            <button class=" uk-button uk-button-primary uk-modal-close" type="button" (click)="resetPassword()">أرسال  </button>
+        </p>
+
+        <p class="uk-text-center">
+            <button class="uk-button uk-button-danger uk-modal-close" type="button">الغاء </button>
+        </p>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<!--offCanvas-->
+
+
+<section>
+    <div class="uk-offcanvas-content ">
+
+
+        <div id="offcanvas-usage" uk-offcanvas>
+
+            <div class="uk-offcanvas-bar">
+
+                <a class="uk-offcanvas-close" style="text-align:left;"><i class="far fa-times-circle"></i></a>
+                <br>
+                <h4 style="text-align:center;">قائمة الصفحات </h4>
+                <br>
+
+                <div class="sidelinks">
+
+                    <ul class=" uk-list uk-list-large uk-list-divider ">
+
+                        <li><a routerLink="/" style="text-decoration: none;"><i class="fas fa-home "  > </i> الصفحة  الرئيسية </a> </li>
+                        <li><a routerLink="/allillnesses" style="text-decoration: none;"><i  class="fas fa-procedures" ></i>  الحالات المرضية  </a></li>
+                        <li *ngIf="isLoggedIn"><a routerLink="/myillness" style="text-decoration: none;"><i class="fas fa-diagnoses" ></i>  حالتي المرضية  </a></li>
+                        <li><a routerLink="/search" style="text-decoration: none;"><i class="fas fa-search" ></i> بحث</a></li>
+                        <li><a routerLink="/callus" style="text-decoration: none;"><i class="fas fa-phone" > </i> أتصل بنا  </a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

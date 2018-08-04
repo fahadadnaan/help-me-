@@ -1,0 +1,81 @@
+<div class="uk-padding">
+
+    <div class="uk-card uk-card-default  ">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+
+                <div class="uk-width-auto">
+                    <img class="uk-border-circle" width="200" height="200" src="{{data.image}}">
+                    <br> <br>
+
+                    <input type="file" (change)="updateUpload($event)" accept=".png,.jpg" />
+                </div>
+
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">البريد ألالكتروني : {{email}}</h3>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="uk-card-body">
+            <div *ngIf="spinner" uk-spinner></div>
+            <p> ألاسم الثلاثي : {{data.name}}</p>
+            <p>رقم الهاتف : {{data.phone}}</p>
+            <p>الحالة المرضية : {{data.illness}}</p>
+            <p>العنوان : {{data.address}}</p>
+            <p>المحافظة : {{data.city}}</p>
+            <p>العمر : {{data.age}}</p>
+
+        </div>
+        <div class="uk-card-footer">
+            <a href="#" class="uk-button uk-button-text" uk-toggle="target: #modal-example">Edit</a> | <a href="/userprofile" class="uk-button uk-button-text">Save</a>
+
+
+
+
+
+            <!-- This is the modal -->
+            <div id="modal-example" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+
+                    <fieldset class="uk-fieldset">
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder="ألاسم الثلاثي " name="name" [(ngModel)]="data.name">
+                        </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder=" العمر " name="age" [(ngModel)]="data.age">
+                        </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder=" رقم الهاتف " name="phone" [(ngModel)]="data.phone">
+                        </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder=" المحافظة " name="city" [(ngModel)]="data.city">
+                        </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder=" العنوان " name="address" [(ngModel)]="data.address">
+                        </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder=" الحالة المرضية " name="illness" [(ngModel)]="data.illness">
+                        </div>
+
+
+                    </fieldset>
+
+                    <p class="uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button"> <span uk-icon="close"></span> اغلاق</button>
+                        <button class="uk-button uk-button-primary uk-modal-close" type="button" (click)="onEdit()"><span uk-icon="check"></span> حفظ </button>
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</div>

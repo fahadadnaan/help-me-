@@ -1,0 +1,22 @@
+canvas,
+img,
+video {
+    max-width: 100%;
+    height: 250px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+    audio,
+    canvas,
+    img,
+    video {
+        max-width: 100%;
+        height: 150px;
+        box-sizing: border-box;
+    }
+}
+
+tbody {
+    color: #7d604f;
+}

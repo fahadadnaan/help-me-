@@ -1,0 +1,30 @@
+.contactTital {
+    padding-bottom: 30px;
+    font-size: 130%;
+    font-weight: 500;
+    color: #7f7b75;
+}
+
+.border-bottoms {
+    border-bottom: 2px solid #7d604f;
+    padding: 2px;
+}
+
+.uk-input:focus,
+.uk-select:focus,
+.uk-textarea:focus {
+    outline: none;
+    background-color: #fff;
+    color: #7f7b75;
+    border-color: #7f7b75;
+}
+
+.uk-button-primary {
+    background-color: #7d604f;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+span {
+    color: #7f7b75;
+}

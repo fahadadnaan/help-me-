@@ -1,0 +1,81 @@
+<div class="uk-padding">
+
+    <div class="uk-card uk-card-default uk-card-body  ">
+        <h3 class="uk-text-center contactTital"> <span class="border-bottoms"> أضف حالتك المرضية  </span> </h3>
+
+        <form [formGroup]="angularForm" novalidate>
+            <div class="uk-width-auto">
+                <span>أضف صورة للتقرير الطبي (اللزامي)</span> <input type="file" (change)="upload($event)" max-size="1000" accept=".png,.jpg" formControlName="imageURL" />
+                <div *ngIf="angularForm.controls['imageURL'].invalid && (angularForm.controls['imageURL'].dirty || angularForm.controls['imageURL'].touched)" class="uk-alert-danger" uk-alert>
+                    <div *ngIf="angularForm.controls['imageURL'].errors.required">
+                        الصورة مطلوبة
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <br>
+
+        <form class="uk-fieldset" [formGroup]="angularForm" novalidate>
+
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="الاسم الكامل " name="name" [(ngModel)]="data.name" formControlName="name">
+                <div *ngIf="angularForm.controls['name'].invalid && (angularForm.controls['name'].dirty || angularForm.controls['name'].touched)" class="uk-alert-danger" uk-alert>
+                    <div *ngIf="angularForm.controls['name'].errors.required">
+                        ألاسم مطلوب
+                    </div>
+                </div>
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="number" placeholder="رقم الهاتف" name="phone" [(ngModel)]="data.phone" formControlName="phone">
+                <div *ngIf="angularForm.controls['phone'].invalid && (angularForm.controls['phone'].dirty || angularForm.controls['phone'].touched)" class="uk-alert-danger" uk-alert>
+                    <div *ngIf="angularForm.controls['phone'].errors.required">
+                        رقم الهاتف مطلوب
+                    </div>
+                </div>
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="الحالة المرضية" name="illness" [(ngModel)]="data.illness" formControlName="illness">
+                <div *ngIf="angularForm.controls['illness'].invalid && (angularForm.controls['illness'].dirty || angularForm.controls['illness'].touched)" class="uk-alert-danger" uk-alert>
+                    <div *ngIf="angularForm.controls['illness'].errors.required">
+                        الحالة المرضية مطلوبه
+                    </div>
+                </div>
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="المحافظة" name="province" [(ngModel)]="data.province" formControlName="province">
+                <div *ngIf="angularForm.controls['province'].invalid && (angularForm.controls['province'].dirty || angularForm.controls['province'].touched)" class="uk-alert-danger" uk-alert>
+                    <div *ngIf="angularForm.controls['province'].errors.required">
+                        المحافظة مطلوبة
+                    </div>
+                </div>
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="number" placeholder="المبلغ المطلوب " name="price" [(ngModel)]="data.price" formControlName="price">
+                <div *ngIf="angularForm.controls['price'].invalid && (angularForm.controls['price'].dirty || angularForm.controls['price'].touched)" class="uk-alert-danger" uk-alert>
+                    <div *ngIf="angularForm.controls['price'].errors.required">
+                        المبلغ مطلوب
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="uk-margin">
+                <textarea class="uk-textarea" rows="5" placeholder="ملاحظات" name="comments" [(ngModel)]="data.comments" formControlName="comments"></textarea>
+
+            </div>
+
+
+
+            <div class="uk-margin">
+                <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" (click)="insertSkill()" [disabled]="angularForm.pristine || angularForm.invalid">أنشاء</button>
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+</div>

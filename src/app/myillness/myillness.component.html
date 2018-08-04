@@ -1,0 +1,136 @@
+<!-- <div class="uk-cover-container ">
+    <img src="assets/img/myI.jpg" alt="" width="100%">
+</div> -->
+<div class="uk-cover-container uk-hidden@l">
+    <canvas width="100" height="250"></canvas>
+    <img src="assets/img/hope3.jpg" alt="" uk-cover="" class="uk-cover">
+</div>
+
+
+<div class="uk-cover-container mypaddingt uk-visible@l">
+    <canvas width="500" height="250"></canvas>
+    <img src="assets/img/hope3.jpg" class="uk-cover" style="height: 432px;width: 1350px;">
+</div>
+
+
+<div class=" uk-padding uk-overflow-auto">
+    <span *ngIf="loading">
+                <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                      </div>
+                  </span>
+    <table class="uk-table uk-table-striped" *ngIf="!loading ">
+        <thead>
+
+            <tr>
+                <ng-container>
+                    <th>ألاسم الكامل</th>
+                    <th>الحالة المرضية</th>
+                    <th>المحافظة</th>
+                    <th>المبلغ المطلوب </th>
+                    <th>رقم الهاتف </th>
+                    <th>التقرير الطبي </th>
+                    <th>تعديل</th>
+                    <th>حذف</th>
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of itemArray">
+                <ng-container *ngIf="item.uid === myUid">
+                    <td>{{item.name}}</td>
+                    <td>{{item.illness}}</td>
+                    <td>{{item.province}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.phone}}</td>
+                    <td><a class="uk-button uk-button-text" href="{{item.imageURL}}" style="color:#7d604f;" target="_blank">معاينة التقرير الطبي </a>
+                    </td>
+                    <td> <button class="uk-button uk-button-primary uk-button-small" type="button" uk-toggle="target: #modal-example" (click)="editForm(item.$key)">تعديل</button></td>
+                    <td> <button class="uk-button uk-button-danger uk-button-small" (click)="onDelete(item.$key); deleteImage()">حذف</button></td>
+
+
+
+                    <!-- This is the modal -->
+                    <div id="modal-example" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+
+                            <fieldset class="uk-fieldset" [formGroup]="angularForm" novalidate>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="الاسم الكامل " name="name" [(ngModel)]="data.name" formControlName="name">
+                                    <div *ngIf="angularForm.controls['name'].invalid && (angularForm.controls['name'].dirty || angularForm.controls['name'].touched)" class="uk-alert-danger" uk-alert>
+                                        <div *ngIf="angularForm.controls['name'].errors.required">
+                                            ألاسم مطلوب
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="number" placeholder="رقم الهاتف" name="phone" [(ngModel)]="data.phone" formControlName="phone">
+                                    <div *ngIf="angularForm.controls['phone'].invalid && (angularForm.controls['phone'].dirty || angularForm.controls['phone'].touched)" class="uk-alert-danger" uk-alert>
+                                        <div *ngIf="angularForm.controls['phone'].errors.required">
+                                            رقم الهاتف مطلوب
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="الحالة المرضية" name="illness" [(ngModel)]="data.illness" formControlName="illness">
+                                    <div *ngIf="angularForm.controls['illness'].invalid && (angularForm.controls['illness'].dirty || angularForm.controls['illness'].touched)" class="uk-alert-danger" uk-alert>
+                                        <div *ngIf="angularForm.controls['illness'].errors.required">
+                                            الحالة المرضية مطلوبه
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="المحافظة" name="province" [(ngModel)]="data.province" formControlName="province">
+                                    <div *ngIf="angularForm.controls['province'].invalid && (angularForm.controls['province'].dirty || angularForm.controls['province'].touched)" class="uk-alert-danger" uk-alert>
+                                        <div *ngIf="angularForm.controls['province'].errors.required">
+                                            المحافظة مطلوبة
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="number" placeholder="المبلغ المطلوب " name="price" [(ngModel)]="data.price" formControlName="price">
+                                    <div *ngIf="angularForm.controls['price'].invalid && (angularForm.controls['price'].dirty || angularForm.controls['price'].touched)" class="uk-alert-danger" uk-alert>
+                                        <div *ngIf="angularForm.controls['price'].errors.required">
+                                            المبلغ مطلوب
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="uk-margin">
+                                    <textarea class="uk-textarea" rows="5" placeholder="ملاحظات" name="comments" [(ngModel)]="data.comments" formControlName="comments"></textarea>
+
+                                </div>
+
+                            </fieldset>
+                            <br>
+                            <div class="uk-width-auto">
+                                <span>أضف صورة للتقرير الطبي (اللزامي)</span> <input type="file" (change)="upload($event)" max-size="1000" accept=".png,.jpg" />
+
+                            </div>
+
+                            <p class="uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close" type="button" (click)="onEdit(item.$key)" [disabled]="angularForm.pristine" [disabled]=" angularForm.invalid">Save</button>
+                            </p>
+                        </div>
+                    </div>
+
+                </ng-container>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+</div>

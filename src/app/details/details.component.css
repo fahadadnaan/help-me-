@@ -1,0 +1,13 @@
+.clickMeColor {
+    color: red;
+}
+
+p {
+    color: #7f7b75;
+}
+
+.border-bottoms {
+    border-bottom: 1px solid rgba(167, 136, 90, 0.63);
+    display: inline;
+    padding-bottom: 3px;
+}

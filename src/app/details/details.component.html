@@ -1,0 +1,38 @@
+<div class=" uk-padding">
+
+    <span *ngIf="loading">
+                <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                      </div>
+                  </span>
+
+</div>
+<div class="uk-padding" *ngIf="!loading">
+    <div class="uk-card uk-card-default uk-card-body ">
+        <h3 style="text-align: center;color: #7d604f"><span class="border-bottoms ">{{data.illness}}</span></h3>
+        <br>
+        <p> الاسم : {{data.name}}</p>
+        <p> البريد الالكتروني : {{data.email}}</p>
+        <p>المحافظة : {{data.province}}</p>
+        <p>المبلغ المطلوب : {{data.price}}</p>
+        <p>رقم الهاتف : {{data.phone}}</p>
+        <p> صورة التقرير الطبي : <a href="{{data.imageURL}}" class="uk-button uk-button-text clickMeColor" target="_blank">معاينة التقرير الطبي بصورة كاملة اضغط هنا  </a></p>
+        <p> الوصف : {{data.comments}}</p>
+
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+
+                <div class="uk-width-expand">
+                    <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">تاريخ أنشاء الحالة المرضية : {{data.time}} </time></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <a routerLink="/allillnesses" class="uk-button uk-button-text">الى الخلف </a>
+    </div>
+
+</div>

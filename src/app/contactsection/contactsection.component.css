@@ -1,0 +1,41 @@
+#contactss {
+    background-color: #38353a;
+    line-height: 40px;
+}
+
+.textAlignTitle,
+.textAlignParagraph {
+    color: #eeebe7;
+    text-align: center;
+}
+
+.contactMargin {
+    margin-bottom: 30px;
+}
+
+.border-bottom-contact {
+    border-bottom: 2px solid #eeebe7;
+}
+
+.icons {
+    margin-left: 12px;
+}
+
+.icons a {
+    color: #eeebe7;
+    text-decoration: none;
+    margin: 0px;
+}
+
+.icons a:hover {
+    color: #eeebe7;
+}
+
+.iconsMargin {
+    margin-top: 35px;
+}
+
+.soical-media a {
+    border-bottom: 2px solid #eeebe7;
+    padding: 10px;
+}

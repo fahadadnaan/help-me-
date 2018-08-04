@@ -1,0 +1,87 @@
+<div class="uk-cover-container mypaddingt">
+
+    <img src="assets/img/contact-us.jpg" alt="" width="100%">
+</div>
+
+
+
+<section class="marginTopDown">
+    <div class="uk-padding">
+        <div class="uk-child-width-expand@s" uk-grid>
+            <div class="uk-grid-item-match">
+                <div class="uk-card uk-card-default uk-card-hover  uk-card-body  ">
+                    <h3 class="uk-text-center contactTital"> <span class="border-bottoms"> تواصل معنا ! </span> </h3>
+
+
+                    <form [formGroup]="angForm" novalidate (ngSubmit)="onSubmit()">
+
+
+                        <div class="uk-margin">
+                            <input class="uk-input" name="email" type="email" placeholder="البريد الالكتروني " formControlName="email">
+                        </div>
+
+                        <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="uk-alert-danger" uk-alert>
+                            <a class="uk-alert-close" uk-close style="text-align:left"></a>
+
+                            <div *ngIf="angForm.controls['email'].errors.required">
+                                البريد ألالكتروني مطلوب
+                            </div>
+                        </div>
+
+
+                        <div class="uk-margin">
+                            <input class="uk-input" name="subject" type="text" placeholder="الموضوع " formControlName="subject">
+                        </div>
+
+                        <div *ngIf="angForm.controls['subject'].invalid && (angForm.controls['subject'].dirty || angForm.controls['subject'].touched)" class="uk-alert-danger" uk-alert>
+                            <a class="uk-alert-close" uk-close style="text-align:left"></a>
+
+                            <div *ngIf="angForm.controls['subject'].errors.required">
+                                عنوان الموضوع مطلوب
+                            </div>
+                        </div>
+
+
+                        <div class="uk-margin">
+                            <textarea class="uk-textarea" name="message" rows="5" placeholder="الرسالة الخاصة بالموضوع " formControlName="message"></textarea>
+                        </div>
+
+                        <div *ngIf="angForm.controls['message'].invalid && (angForm.controls['message'].dirty || angForm.controls['message'].touched)" class="uk-alert-danger" uk-alert>
+                            <a class="uk-alert-close" uk-close style="text-align:left"></a>
+
+                            <div *ngIf="angForm.controls['message'].errors.required">
+                                عنوان الموضوع مطلوب
+                            </div>
+                        </div>
+
+
+                        <div class="uk-text-center">
+                            <button class="uk-button uk-button-primary" type="submit" [disabled]="angForm.pristine || angForm.invalid">أرسال الرسالة </button>
+
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+            <div class="uk-text-center">
+                <h3 class="uk-text-center contactTital"> <span class="border-bottoms">أتصل بنا !</span> </h3>
+
+                <address style="font-size: 16px; letter-spacing: 1px ">
+<div class="padding-bottom-10 "><span class="border-bottom-white ">تواجدنا</span></div>
+8ص - 4م 
+<br><br>
+<div class="padding-bottom-10 "><span class="border-bottom-white ">العنوان</span></div>
+العراق
+<br><br>
+<div class="padding-bottom-10 "><span class="border-bottom-white ">البريد ألالكتروني </span></div>
+info@codeforiraq.org
+<br><br>
+<div class="padding-bottom-10 "><span class="border-bottom-white ">الهاتف </span></div>
+(+964) 555 5555555
+
+</address>
+            </div>
+        </div>
+    </div>
+</section>

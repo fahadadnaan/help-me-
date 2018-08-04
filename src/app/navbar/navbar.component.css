@@ -1,0 +1,223 @@
+.sidelinks a {
+    text-decoration: none;
+    color: #c9c9c9;
+}
+
+.sidelinks i {
+    padding-left: 5px;
+}
+
+.sidelinks {
+    text-align: right;
+}
+
+.sidelinks a:hover {
+    color: white;
+}
+
+.uk-offcanvas-close a:hover {
+    color: white;
+}
+
+.uk-offcanvas-close {
+    color: #c9c9c9;
+    font-size: 20px;
+}
+
+.uk-input:focus,
+.uk-select:focus,
+.uk-textarea:focus {
+    outline: none;
+    background-color: #fff;
+    color: #7f7b75;
+    border-color: #7f7b75;
+    box-shadow: 0 1px 5px 0px #796b56;
+}
+
+.uk-input,
+.uk-select,
+.uk-textarea {
+    max-width: 100%;
+    width: 100%;
+    border: 0 none;
+    padding: 0 10px;
+    background: #fff;
+    color: #666;
+    border: 1px solid #e5e5e5;
+    transition: 0.2s ease-in-out;
+    transition-property: all;
+    transition-property: color, background-color, border;
+    border-radius: 25px;
+}
+
+.uk-button-primary {
+    border: none;
+    border-radius: 25px;
+    background-color: #b69666;
+    color: #fff;
+    box-shadow: 0 10px 30px 0px #b69666;
+    min-width: 160px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.uk-button-primary:hover {
+    background-color: #7d604f;
+    color: #fff;
+    box-shadow: 0 10px 30px 0px #7d604f;
+}
+
+.uk-button-danger {
+    border: none;
+    border-radius: 25px;
+    background-color: #b69666;
+    color: #fff;
+    box-shadow: 0 10px 30px 0px #b69666;
+    min-width: 160px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-top: 3%;
+}
+
+.uk-button-danger:hover {
+    background-color: #7d604f;
+    color: #fff;
+    box-shadow: 0 10px 30px 0px #7d604f;
+}
+
+.glowBox {
+    background: linear-gradient(135deg, #c5a36f, #7d604f);
+    margin-top: -50px;
+    padding: 20px 0;
+    width: 100%;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2), 0 13px 24px -11px #7d604f;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2), 0 13px 24px -11px #7d604f;
+    border-radius: 6px;
+}
+
+.title {
+    margin-top: 0.625rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1.5em;
+    text-align: center;
+    color: #fff;
+}
+
+.socialMedia {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0;
+}
+
+.socialMedia i {
+    color: #fff;
+    font-size: 22px;
+}
+
+.socialMedia a {
+    text-decoration: none;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.desc {
+    color: #888888;
+    font-size: 14px;
+    margin: 0 0 10px;
+}
+
+.form {
+    display: block;
+    width: 100%;
+    padding: 0.4375rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 0;
+    border-bottom: 1px solid #d2d2d2;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    padding-bottom: 7px;
+    margin: 27px 0 0 0;
+}
+
+input::-webkit-input-placeholder {
+    color: #aaa;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: #7d604f;
+}
+
+.form:focus {
+    transform: scale(1);
+}
+
+.uk-button-text {
+    padding: 0;
+    line-height: 2.5;
+    background: none;
+    color: #7d604f;
+    position: relative;
+    font-size: 100%;
+}
+
+[class*="uk-inline"] {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    vertical-align: middle;
+}
+
+@media (max-width: 480px) {
+    .alignLeft {
+        float: left;
+        font-size: 90%;
+    }
+    .alignRight {
+        float: right;
+        font-size: 90%;
+    }
+    .uk-button-danger {
+        margin-top: 5%;
+    }
+}
+
+@media (max-width: 479px) {
+    .alignLeft {
+        float: left;
+        font-size: 85%;
+    }
+    .alignRight {
+        float: right;
+        font-size: 85%;
+    }
+    .uk-button-danger {
+        margin-top: 5%;
+    }
+}
+
+@media (max-width: 346px) {
+    .alignLeft {
+        float: left;
+        font-size: 80%;
+    }
+    .alignRight {
+        float: right;
+        font-size: 80%;
+    }
+    .uk-button-danger {
+        margin-top: 5%;
+    }
+}

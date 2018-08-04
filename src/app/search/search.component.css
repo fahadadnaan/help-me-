@@ -1,0 +1,112 @@
+    /* audio,
+canvas,
+img,
+video {
+    height: 250px;
+    max-width: 100%;
+} */
+    /*
+@media (max-width: 640px) {
+    audio,
+    canvas,
+    img,
+    video {
+        max-width: 100%;
+        height: 150px;
+        box-sizing: border-box;
+    }
+} */
+    
+    .mymargin {
+        padding: 5px;
+    }
+    
+    .mymargin2 {
+        padding: 10px;
+        padding-left: 30px;
+    }
+    
+    .mymargin3 {
+        padding-top: 0px;
+    }
+    
+    .mymargin4 {
+        padding-bottom: 0px;
+    }
+    
+    #parentBadge {
+        position: relative;
+    }
+    /* @media (max-width: 1225px) {
+.minAddress {
+position: absolute;
+top: 10%;
+right: 88%;
+}
+} */
+    
+    @media (min-width: 1019px) {
+        .maxAddress {
+            position: absolute;
+            top: 5%;
+            right: 88%;
+        }
+        .uk-comment-avatar {
+            height: 100px;
+        }
+    }
+    
+    @media (max-width: 1018px) {
+        .maxAddress {
+            position: absolute;
+            top: 5%;
+            right: 60%;
+        }
+        .uk-comment-avatar {
+            height: 90px;
+        }
+        .paragraph1 {
+            text-align: center;
+            font-size: 0.8rem;
+            margin-right: -25px;
+            margin-top: 10px;
+        }
+        .titleEdit {
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 5px;
+        }
+    }
+    
+    @media (width: 768px) {
+        .maxAddress {
+            position: absolute;
+            top: 5%;
+            right: 84%;
+        }
+    }
+    
+    .uk-label {
+        background: rgb(148, 131, 115);
+    }
+    
+    .uk-search-icon {
+        color: #38353a71;
+    }
+    
+    .uk-search-input {
+        width: 150%;
+        color: rgb(148, 131, 115);
+    }
+    
+    .uk-search-default .uk-search-input {
+        border: 1px solid #38353a71;
+    }
+    
+    .noteColor {
+        color: #7d604f;
+    }
+    
+    .pColor {
+        color: rgb(148, 131, 115);
+    }
